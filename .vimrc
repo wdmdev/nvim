@@ -28,6 +28,10 @@ Plugin 'marijnh/tern_for_vim'
 
 Plugin 'tomasr/molokai'
 
+Plugin 'vim-latex/vim-latex'
+
+Plugin 'tyru/open-browser.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -67,3 +71,23 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
+
+" For local replace
+nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+
+" For global replace
+nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+
+" Smart search
+" If it looks like URI, open an URI under cursor.
+" Otherwise, search a word under cursor.
+" My setting.
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+let g:openbrowser_default_search = 'duckduckgo'
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+
+"Adding new search engines
+let g:openbrowser_search_engines = {
+            \'arx': 'https://arxiv.org/search/advanced?advanced=&terms-0-operator=AND&terms-0-term={query}&terms-0-field=all&classification-computer_science=y&classification-economics=y&classification-eess=y&classification-mathematics=y&classification-physics=y&classification-physics_archives=all&classification-q_biology=y&classification-q_finance=y&classification-statistics=y&classification-include_cross_list=include&date-filter_by=all_dates&date-year=&date-from_date=&date-to_date=&date-date_type=submitted_date&abstracts=show&size=50&order=-announced_date_first', 
+            \'findit': 'https://findit.dtu.dk/en/catalog?q={query}'}
