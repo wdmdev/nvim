@@ -1,39 +1,73 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+Plug 'drewtempelmeyer/palenight.vim'
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'https://github.com/kien/ctrlp.vim.git'
 
-Plugin 'https://github.com/kien/ctrlp.vim.git'
+Plug 'https://github.com/vim-airline/vim-airline.git'
 
-Plugin 'https://github.com/vim-airline/vim-airline.git'
+Plug 'tpope/vim-fugitive'
 
-Plugin 'tpope/vim-fugitive'
+Plug 'https://github.com/scrooloose/nerdtree.git'
 
-Plugin 'https://github.com/scrooloose/nerdtree.git'
+Plug 'https://github.com/vim-syntastic/syntastic.git'
 
-Plugin 'https://github.com/vim-syntastic/syntastic.git'
+Plug 'https://github.com/Valloric/YouCompleteMe.git'
 
-Plugin 'https://github.com/Valloric/YouCompleteMe.git'
+Plug 'https://github.com/leafgarland/typescript-vim.git'
 
-Plugin 'https://github.com/leafgarland/typescript-vim.git'
+Plug 'marijnh/tern_for_vim'
 
-Plugin 'marijnh/tern_for_vim'
+Plug 'tomasr/molokai'
 
-Plugin 'tomasr/molokai'
+Plug 'vim-latex/vim-latex'
 
-Plugin 'vim-latex/vim-latex'
+Plug 'tyru/open-browser.vim'
+Plug 'https://github.com/kien/ctrlp.vim.git'
 
-Plugin 'tyru/open-browser.vim'
+Plug 'https://github.com/vim-airline/vim-airline.git'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+Plug 'tpope/vim-fugitive'
+
+Plug 'https://github.com/scrooloose/nerdtree.git'
+
+Plug 'https://github.com/vim-syntastic/syntastic.git'
+
+Plug 'https://github.com/Valloric/YouCompleteMe.git'
+
+Plug 'https://github.com/leafgarland/typescript-vim.git'
+
+Plug 'marijnh/tern_for_vim'
+
+Plug 'tomasr/molokai'
+
+Plug 'vim-latex/vim-latex'
+
+Plug 'tyru/open-browser.vim'
+
+
+call plug#end()
+
+"Palenight theme
+set background=dark
+colorscheme palenight
+
+let g:lightline = { 'colorscheme': 'palenight' }
+let g:airline_theme="palenight"
+
+"True colors
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -52,14 +86,7 @@ map <F2> :NERDTreeToggle<CR>
 
 "Show hidden files in NerdTree
 "let NERDTreeShowHidden=1
-"
-""autopen NERDTree and focus cursor in new document
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
 
-""Choose colorscheme
-let g:rehash256 = 1
-colorscheme molokai
 
 ""Set line numbers
 set number
